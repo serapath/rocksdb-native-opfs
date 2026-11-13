@@ -62,7 +62,7 @@ Store paths are ordinary path strings, interpreted as directories under the OPFS
 
 ## Demo
 
-`npm run demo` serves `demo/` with budo. two corestores on opfs in a worker, `a` makes a core and `b` replicates it. reload the page (or restart the browser) and both still have the data, then one more block gets replicated. `?reset` starts over. replication needs `crypto_scalarmult_ed25519_noclamp` which sodium-javascript doesnt have, so the demo adds it from `libsodium-wrappers-sumo` for now
+`npm run demo` serves `demo/` with budo. two corestores on opfs in a worker, `a` makes a core and `b` replicates it. reload the page (or restart the browser) and both still have the data, then one more block gets replicated. `?reset` starts over. replication needs `crypto_scalarmult_ed25519_noclamp` which sodium-javascript doesnt have, so `sodium-universal` is [sodium-crypto](https://github.com/serapath/sodium-crypto) (devDependency + overrides), in browsers that is sodium-js which has it once `ready`
 
 ## Running the tests
 
