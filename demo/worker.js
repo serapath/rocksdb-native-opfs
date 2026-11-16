@@ -55,16 +55,11 @@ async function main() {
 }
 
 // Replication needs a Noise handshake, and noise-curve-ed calls
-// crypto_scalarmult_ed25519_noclamp, which sodium-javascript doesn't have.
-// libsodium.js (libsodium compiled to wasm) does. Under browserify the
-// sodium-universal object is not the same as require('sodium-javascript'), so
-// patch the one noise-curve-ed uses.
+// crypto_scalarmult_ed25519_noclamp. sodium-universal is sodium-crypto here
+// (package.json overrides), in browsers that is sodium-js, which loads it from
+// libsodium.js once it is ready.
 async function addNoclamp() {
-  const libsodium = require('libsodium-wrappers-sumo')
-  await libsodium.ready
-  const sodium = require('sodium-universal')
-  sodium.crypto_scalarmult_ed25519_BYTES = libsodium.crypto_scalarmult_ed25519_BYTES
-  sodium.crypto_scalarmult_ed25519_noclamp = (q, n, p) => q.set(libsodium.crypto_scalarmult_ed25519_noclamp(n, p))
+  await require('sodium-universal').ready
 }
 
 async function readAll(core, n, wait) {

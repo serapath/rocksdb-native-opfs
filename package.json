@@ -41,7 +41,6 @@
     "hypercore-crypto": "^3.4.2",
     "hypercore-storage": "3.4.0",
     "hyperswarm": "^4.17.2",
-    "libsodium-wrappers-sumo": "^0.8.4",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "rache": "^1.0.0",
@@ -49,10 +48,14 @@
     "resolve-reject-promise": "^1.1.0",
     "rocksdb-native": "3.19.1",
     "sodium-javascript": "^0.8.0",
+    "sodium-universal": "github:serapath/sodium-crypto#b0de879f4df65b58d314646e9e8e7354dda25e77",
     "speedometer": "^1.1.0",
     "test-tmp": "^1.3.1",
     "tiny-byte-size": "^1.1.0",
     "udx-native": "^1.21.3",
     "uncaughts": "^1.1.3"
+  },
+  "overrides": {
+    "sodium-universal": "$sodium-universal"
   }
 }
